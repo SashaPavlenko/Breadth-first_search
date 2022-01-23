@@ -1,0 +1,31 @@
+#include <queue>
+#include <iostream>
+
+const int PEAKS = 5;
+
+int main() {
+    std::queue<int> peakQueue;
+    int was[PEAKS] = {0};
+    int matr[PEAKS][PEAKS] = {{1, 0, 1, 1, 1},
+                              {0, 1, 0, 1, 0},
+                              {1, 0, 1, 0, 1},
+                              {1, 1, 0, 1, 0},
+                              {1, 0, 1, 0, 1}};
+
+    peakQueue.push(0);
+    was[0] = 1;
+
+    while(!peakQueue.empty()) {
+        int peak = peakQueue.front();
+        peakQueue.pop();
+        for (int i = 0; i < PEAKS; i++) {
+            if (i != peak && matr[peak][i] == 1 && was[i] != 1) {
+                peakQueue.push(i);
+                was[i] = 1;
+                std::cout << i << std::endl;
+            }
+        }
+
+    }
+
+}
