@@ -7,37 +7,22 @@
 const int PEAKS = 5;
 
 int main() {
-    /*std::queue<int> peakQueue;
-    int was[PEAKS] = {0};
-    int matr[PEAKS][PEAKS] = {
-        {1, 0, 1, 1, 1},
-        {0, 1, 0, 1, 0},
-        {1, 0, 1, 0, 1},
-        {1, 1, 0, 1, 0},
-        {1, 0, 1, 0, 1}
-    };
-
-    peakQueue.push(0);
-    was[0] = 1;
-
-    while(!peakQueue.empty()) {
-        int peak = peakQueue.front();
-        peakQueue.pop();
-        for (int i = 0; i < PEAKS; i++) {
-            if (i != peak && matr[peak][i] == 1 && was[i] != 1) {
-                peakQueue.push(i);
-                was[i] = 1;
-                std::cout << i << std::endl;
-            }
-        }
-
-    }*/
-
+    // Пример графа.
     try
     {
-        std::string str{ "test_incorrect_adj_matrix.txt" };
+        // Инициализация.
+        std::string str{ "test_adj_matrix.txt" };
         my_graph t(str);
+        
+        // Печать на экран.
         t.print();
+        cout << endl;
+
+        // Печать обхода.
+        auto peaks = t.bread_first_search();
+        for (auto i : peaks) {
+            cout << i+1 << " ";
+        }
     }
     catch (MyFileExceprion& exception) {
         cerr << "Exception: " << exception.what() << endl;
@@ -46,5 +31,7 @@ int main() {
 
         std::cerr << "Standard exception: " << exception.what() << endl;
     }
+    //*/
 
+    return 0;
 }

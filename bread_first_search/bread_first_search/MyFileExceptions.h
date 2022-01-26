@@ -2,6 +2,7 @@
 #include <exception>
 #include <string>
 
+// Класс MyFileExceprion, написанный для отловки исключений, связанных с читыванием данных.
 class MyFileExceprion : public std::exception
 {
 private:
