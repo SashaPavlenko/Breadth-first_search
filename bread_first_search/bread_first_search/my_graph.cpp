@@ -6,7 +6,7 @@
 
 int my_graph::solve_size(string filename)
 {
-	int k{ 0 };
+	int columns{ 0 };
 	string str;
 
 	ifstream fin(filename, ios_base::in);
@@ -17,10 +17,22 @@ int my_graph::solve_size(string filename)
 		throw MyFileExceprion("File is not open!");
 
 	getline(fin, str);
-	k = count(begin(str), end(str), ' ');
-
+	columns = count(begin(str), end(str), ' ');
+	++columns;
+	
+	int rows{ 1 };
+	while (getline(fin, str)) {
+		rows++;
+	}
+	
 	fin.close();
-	return ++k;
+
+	// Ошибка: некорректно задана матрица смежности
+	if (columns != rows) {
+		throw MyFileExceprion("IncorrectMatrix");
+	}
+
+	return columns;
 }
 
 my_graph::my_graph(string filename)
