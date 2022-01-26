@@ -11,5 +11,5 @@ public:
 	MyFileExceprion(std::string error): m_error(error) {}
 
 	// ¬озвращаем std::string в качестве константной строки C-style
-	const char* what() const noexcept { return m_error.c_str(); } // C++11 и выше
+	const char* what() const noexcept { return m_error.c_str(); }
 };

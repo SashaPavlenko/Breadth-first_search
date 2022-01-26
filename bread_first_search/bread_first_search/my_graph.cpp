@@ -9,7 +9,7 @@ int my_graph::solve_size(string filename)
 	int k{ 0 };
 	string str;
 
-	ifstream fin(filename);
+	ifstream fin(filename, ios_base::in);
 	
 
 	// Ошибка: не открыт файл.
@@ -20,7 +20,7 @@ int my_graph::solve_size(string filename)
 	k = count(begin(str), end(str), ' ');
 
 	fin.close();
-	return k;
+	return ++k;
 }
 
 my_graph::my_graph(string filename)
