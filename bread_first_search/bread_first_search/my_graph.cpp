@@ -2,6 +2,7 @@
 #include <fstream>
 #include <iostream>
 #include <algorithm>
+#include "MyFileExceptions.h"
 
 int my_graph::solve_size(string filename)
 {
@@ -13,8 +14,7 @@ int my_graph::solve_size(string filename)
 
 	// Ошибка: не открыт файл.
 	if (!fin.is_open())
-		throw 1;
-	else
+		throw MyFileExceprion("File is not open!");
 
 	getline(fin, str);
 	k = count(begin(str), end(str), ' ');

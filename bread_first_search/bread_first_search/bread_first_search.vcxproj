@@ -143,6 +143,7 @@
     <ClCompile Include="my_graph.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MyFileExceptions.h" />
     <ClInclude Include="my_graph.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
