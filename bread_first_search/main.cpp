@@ -35,8 +35,9 @@ int main() {
 
     try
     {
-        std::string str{ "test_incorrect_matrix.txt" };
+        std::string str{ "test_incorrect_adj_matrix.txt" };
         my_graph t(str);
+        t.print();
     }
     catch (MyFileExceprion& exception) {
         cerr << "Exception: " << exception.what() << endl;
