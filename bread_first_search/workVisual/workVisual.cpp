@@ -1,24 +1,19 @@
 #include "workVisual.h"
 
-workVisual::workVisual(QWidget *parent)
+workVisual::workVisual(my_graph _graph, QWidget *parent)
     : QMainWindow(parent)
 {
     ui.setupUi(this);
+    adj_matr = _graph.get_adj_matr();
+    order = _graph.bread_first_search();
+    curr = 0;
 }
 
 void workVisual::makeDots()
 {
-    std::vector<std::vector<int>> matr = {
-        {1, 0, 1, 1, 1},
-        {0, 1, 0, 1, 0},
-        {1, 0, 1, 0, 1},
-        {1, 1, 0, 1, 0},
-        {1, 0, 1, 0, 1}
-    };
-    std::vector<int> was = { 2, 1, 0, 4, 3 };
-    order = was;
+    std::vector<std::vector<int>> matr = adj_matr;
+    std::vector<int> was = order;
     std::vector<Edge> used_by = getPairs(matr);
-    curr = 0;
     std::vector<std::string> name;
     for (int i = 0; i < matr.size(); i++) {
         name.push_back(std::to_string(i + 1));

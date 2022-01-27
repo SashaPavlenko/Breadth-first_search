@@ -129,3 +129,8 @@ void my_graph::print()
 		cout << endl;
 	}
 }
+
+vector<vector<int>> my_graph::get_adj_matr()
+{
+	return adj_matr;
+}

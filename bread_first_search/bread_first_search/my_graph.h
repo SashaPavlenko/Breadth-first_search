@@ -32,5 +32,7 @@ public:
 
 	// Функция вывода на консоль матрицы смежности.
 	void print();
+
+	vector<vector<int>> get_adj_matr();
 };
 

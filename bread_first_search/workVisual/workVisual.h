@@ -7,6 +7,7 @@
 #include <iostream>
 #include "boost/graph/graphviz.hpp"
 #include "boost/graph/sequential_vertex_coloring.hpp"
+#include "../bread_first_search/my_graph.h"
 
 
 typedef std::pair<int, int> Edge;
@@ -25,7 +26,7 @@ class workVisual : public QMainWindow
     Q_OBJECT
 
 public:
-    workVisual(QWidget *parent = Q_NULLPTR);
+    workVisual(my_graph _graph, QWidget *parent = Q_NULLPTR);
 
     void makeDots();
 
@@ -38,6 +39,7 @@ public slots:
 
 private:
     Ui::workVisualClass ui;
+    std::vector<std::vector<int>> adj_matr;
     std::vector<int> order;
     int curr;
 
