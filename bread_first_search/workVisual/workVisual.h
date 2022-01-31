@@ -41,6 +41,7 @@ private:
     Ui::workVisualClass ui;
     std::vector<std::vector<int>> adj_matr;
     std::vector<int> order;
+    std::vector<std::pair<int, int>> edges;
     int curr;
 
     std::vector<Edge> getPairs(std::vector<std::vector<int>> adj_matr);
@@ -76,7 +77,7 @@ class edge_color_writer {
 public:
 
     // constructor - needs reference to graph we are coloring
-    edge_color_writer(Graph& g, const std::vector<int>& _whatColor) : myGraph(g), whatColor(_whatColor) {}
+    edge_color_writer(Graph& g, const std::vector<std::pair<int, int>>& _whatColor) : myGraph(g), whatColor(_whatColor) {}
 
     // functor that does the coloring
     template <class VertexOrEdge>
@@ -85,15 +86,12 @@ public:
         // check if this is the edge we want to color red
         int color_ = 0;
         for (auto i : whatColor) {
-            if (boost::target(e, myGraph) == i)
-                color_++;
-            if (boost::source(e, myGraph) == i)
-                color_++;
-            if (color_ == 2)
+            if (boost::target(e, myGraph) == i.first && boost::source(e, myGraph) == i.second ||
+                boost::target(e, myGraph) == i.second && boost::source(e, myGraph) == i.first)
                 out << "[color=red]";
         }
     }
 private:
     Graph& myGraph;
-    std::vector<int> whatColor;
+    std::vector<std::pair<int, int>> whatColor;
 };

@@ -9,6 +9,8 @@ class my_graph
 private:
 	// Матрица смежности.
 	vector<vector<int> > adj_matr;
+
+	vector<pair<int, int>> edges;
 	
 	// Размерность матрицы смежности size x size.
 	int size;
@@ -34,5 +36,7 @@ public:
 	void print();
 
 	vector<vector<int>> get_adj_matr();
+
+	vector<pair<int, int>> get_edges();
 };
 

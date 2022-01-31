@@ -6,6 +6,7 @@ workVisual::workVisual(my_graph _graph, QWidget *parent)
     ui.setupUi(this);
     adj_matr = _graph.get_adj_matr();
     order = _graph.bread_first_search();
+    edges = _graph.get_edges();
     curr = 0;
 }
 
@@ -25,11 +26,15 @@ void workVisual::makeDots()
 
     Graph g(used_by.begin(), used_by.end(), weights, matr.size());
     std::vector<int> color;
+    std::vector<std::pair<int, int>> color_edge;
     for (int i = 0; i < was.size(); i++) {
+        if (i != 0) {
+            color_edge.push_back(edges[i - 1]);
+        }
         std::string num = std::to_string(i);
         color.push_back(was[i]);
         std::ofstream file("out" + num + ".dot");
-        boost::write_graphviz(file, g, vertex_color_writer(g, color), edge_color_writer(g, color));
+        boost::write_graphviz(file, g, vertex_color_writer(g, color), edge_color_writer(g, color_edge));
         file.close();
         num = "dot -Tpng out" + num + ".dot -o output" + num + ".png";
         std::cout << system(num.c_str());

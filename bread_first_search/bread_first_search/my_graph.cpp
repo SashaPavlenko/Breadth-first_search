@@ -113,6 +113,7 @@ vector<int> my_graph::bread_first_search()
 				peaks_queue.push(i);
 				marked[i] = 1;
 				peaks.push_back(i);
+				edges.push_back({peak, i});
 			}
 		}
 	}
@@ -133,4 +134,9 @@ void my_graph::print()
 vector<vector<int>> my_graph::get_adj_matr()
 {
 	return adj_matr;
+}
+
+vector<pair<int, int>> my_graph::get_edges()
+{
+	return edges;
 }
